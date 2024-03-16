@@ -138,7 +138,7 @@ class pc_EventHandler : EventHandler
     double height = textureSize.y * size;
     if (_settings.isScaledByDistance())
     {
-      double distFac = GetDistanceScale(0, 512, 1.0, 4.0);
+      double distFac = GetDistanceScale(0, 512);
       width *= distFac;
       height *= distFac;
     }
@@ -466,6 +466,7 @@ class pc_EventHandler : EventHandler
       return minScale;
     }
     double dist = Clamp(_distToTarget, minDist, maxDist);
+    return LinearMap(dist, maxdist, mindist, minscale, maxscale);
   }
     
 
