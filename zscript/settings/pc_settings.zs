@@ -33,6 +33,7 @@ class pc_Settings : pc_SettingsPack
   bool isDisabledOnSlot1   () { checkInit(); return _disableOnSlot1   .value(); }
   bool isDisabledOnNotReady() { checkInit(); return _disableOnNotReady.value(); }
   bool isDisabledOnNoWeapon() { checkInit(); return _disableNoWeapon  .value(); }
+  bool isScaledByDistance  () { checkInit(); return _distanceScale    .value(); }
 
   bool isTargetHealth() { checkInit(); return _targetHealth.value(); }
 
@@ -51,6 +52,7 @@ class pc_Settings : pc_SettingsPack
     push(_disableOnNotReady = newBoolSetting("pc_disable_not_ready"));
     push(_disableNoWeapon   = newBoolSetting("pc_disable_no_weapon"));
     push(_targetHealth      = newBoolSetting("pc_target_health"    ));
+    push(_distanceScale     = newBoolSetting("pc_distance_scale"   ));
 
     _isInitialized = true;
   }
@@ -69,6 +71,7 @@ class pc_Settings : pc_SettingsPack
   private pc_BoolSetting _disableOnNotReady;
   private pc_BoolSetting _disableNoWeapon;
   private pc_BoolSetting _targetHealth;
+  private pc_BoolSetting _distanceScale;
 
   private PlayerInfo     _player;
   private transient bool _isInitialized;

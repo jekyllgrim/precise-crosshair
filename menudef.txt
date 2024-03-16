@@ -39,6 +39,7 @@ OptionMenu pc_Menu
   Option     "$PC_SLOT_1"          , pc_disable_slot_1    , YesNo
   Option     "$PC_NOT_READY"       , pc_disable_not_ready , YesNo
   Option     "$PC_NO_WEAPON"       , pc_disable_no_weapon , YesNo
+  Option     "$PC_DISTANCE_SCALE"  , pc_distance_scale    , YesNo
 
   StaticText ""
   Option     "$PC_TARGET_COLOR"    , pc_target_health     , YesNo

@@ -18,6 +18,7 @@ PC_SLOT_1   = "Disable on slot 1";
 PC_NOT_READY = "Disable when weapon is not ready";
 PC_NO_WEAPON = "Disable when there is no weapon";
 PC_TARGET_COLOR = "Show target color instead of player";
+PC_DISTANCE_SCALE = "Scale crosshair by distance";
 
 // Crosshair names /////////////////////////////////////////////////////////////
 
