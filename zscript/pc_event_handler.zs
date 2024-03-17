@@ -351,6 +351,17 @@ class pc_EventHandler : EventHandler
     _externalY.SetFloat(y);
   }
 
+  private play
+  void setExternalScale (PlayerInfo player, double scale) const
+  {
+    if (_externalScale == NULL)
+    {
+      _externalScale = Cvar.GetCVar("pc_scale", player);
+    }
+
+    _externalScale.SetFloat(scale);
+  }
+
 // private: ////////////////////////////////////////////////////////////////////
 
   private ui static
@@ -461,12 +472,14 @@ class pc_EventHandler : EventHandler
   private ui
   double GetDistanceScale(double minDist = 0, double maxDist = 1024, double minScale = 1.0, double maxScale = 4.0)
   {
-    if (_distToTarget >= maxDist)
+    double scale = minScale;
+    if (_distToTarget < maxDist)
     {
-      return minScale;
+      double dist = Clamp(_distToTarget, minDist, maxDist);
+      scale = LinearMap(dist, maxdist, mindist, minscale, maxscale);
     }
-    double dist = Clamp(_distToTarget, minDist, maxDist);
-    return LinearMap(dist, maxdist, mindist, minscale, maxscale);
+    setExternalScale(players[consoleplayer], scale);
+    return scale;
   }
     
 
@@ -484,6 +497,7 @@ class pc_EventHandler : EventHandler
   private transient bool   _isPrepared;
   private transient Cvar   _cvarRenderer;
   private transient Cvar   _externalY;
+  private transient Cvar   _externalScale;
 
   private pc_Le_ProjScreen _projection;
   private pc_Le_GlScreen   _glProjection;
